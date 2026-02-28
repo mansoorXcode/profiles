@@ -13,9 +13,18 @@ A modern, minimalist, Linktree-style personal portfolio website built for GitHub
 - **Linktree-Style Layout**: Clean, centered design for easy navigation
 - **Smooth Animations**: Hover effects, scroll reveals, and gradient animations
 - **Responsive Design**: Optimized for both mobile and desktop
-- **Single File**: Everything in one `index.html` for easy deployment
+- **Multiple Versions**: Two portfolio versions - v1 (basic) & v2 (enhanced)
+- **Self-Contained**: Each HTML file includes all CSS and JS for easy deployment
 
-## 📂 Sections
+## 📁 Files
+
+| File | Description |
+|------|-------------|
+| `index.0.0.1.html` | Portfolio v1 - Clean, minimalist design |
+| `index.0.0.2.html` | Portfolio v2 - Enhanced with additional features |
+| `README.md` | Project documentation |
+
+## 📂 Sections (Both Versions)
 
 1. **Hero** - Profile image, name, and tagline
 2. **About Me** - Bio and current focus
@@ -28,12 +37,15 @@ A modern, minimalist, Linktree-style personal portfolio website built for GitHub
 
 ### GitHub Pages
 
-1. Push this file to a GitHub repository
+1. Push files to a GitHub repository
 2. Go to **Settings > Pages**
 3. Select **Deploy from a branch**
 4. Choose **main** branch and **/(root)** folder
 5. Click **Save**
 6. Your site will be live at `https://yourusername.github.io/repository-name`
+7. Set one version as `index.html` for the default page, or access versions directly:
+   - `https://yourusername.github.io/repository-name/index.0.0.1.html`
+   - `https://yourusername.github.io/repository-name/index.0.0.2.html`
 
 ### Local Development
 
