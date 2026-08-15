@@ -116,9 +116,12 @@
   }
 
   .avatar-inner img {
+    display: block;
     width: 100%;
     height: 100%;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
+    object-position: center;
     filter: grayscale(20%);
   }
 
@@ -250,6 +253,20 @@
   }
 
   /* ── LINK BUTTONS ── */
+  .links-section { margin-top: 26px; }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .section-title::before,
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .links { display: flex; flex-direction: column; gap: 10px; }
 
   .link-btn {
@@ -293,33 +310,20 @@
     border-color: rgba(200,169,110,0.25);
     box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(200,169,110,0.1);
   }
-
   .link-btn:hover::before { opacity: 1; }
   .link-btn:hover::after { opacity: 1; transform: scaleY(1); }
   .link-btn:active { transform: translateX(2px) scale(0.99); }
 
   .btn-instagram::after { background: linear-gradient(180deg, #f09433, #dc2743, #bc1888); }
-  .btn-instagram:hover { box-shadow: 0 8px 32px rgba(220,39,67,0.2), 0 0 0 1px rgba(220,39,67,0.15); }
   .btn-linkedin::after { background: #0077b5; }
-  .btn-linkedin:hover { box-shadow: 0 8px 32px rgba(0,119,181,0.2), 0 0 0 1px rgba(0,119,181,0.15); }
   .btn-github::after { background: #e8e8e8; }
-  .btn-github:hover { box-shadow: 0 8px 32px rgba(232,232,232,0.1), 0 0 0 1px rgba(232,232,232,0.1); }
   .btn-twitter::after { background: #1da1f2; }
-  .btn-twitter:hover { box-shadow: 0 8px 32px rgba(29,161,242,0.2), 0 0 0 1px rgba(29,161,242,0.15); }
   .btn-reddit::after { background: #ff4500; }
-  .btn-reddit:hover { box-shadow: 0 8px 32px rgba(255,69,0,0.2), 0 0 0 1px rgba(255,69,0,0.15); }
   .btn-telegram::after { background: #229ed9; }
-  .btn-telegram:hover { box-shadow: 0 8px 32px rgba(34,158,217,0.2), 0 0 0 1px rgba(34,158,217,0.15); }
   .btn-snapchat::after { background: #fffc00; }
-  .btn-snapchat:hover { box-shadow: 0 8px 32px rgba(255,252,0,0.15), 0 0 0 1px rgba(255,252,0,0.15); }
-
-  .link-btn:nth-child(1) { animation-delay: 0.3s; }
-  .link-btn:nth-child(2) { animation-delay: 0.35s; }
-  .link-btn:nth-child(3) { animation-delay: 0.4s; }
-  .link-btn:nth-child(4) { animation-delay: 0.45s; }
-  .link-btn:nth-child(5) { animation-delay: 0.5s; }
-  .link-btn:nth-child(6) { animation-delay: 0.55s; }
-  .link-btn:nth-child(7) { animation-delay: 0.6s; }
+  .btn-leetcode::after { background: #f89f1b; }
+  .btn-hackerrank::after { background: #2ec866; }
+  .btn-game::after { background: var(--accent); }
 
   .btn-icon {
     width: 36px;
@@ -332,32 +336,43 @@
     flex-shrink: 0;
     transition: transform 0.3s;
   }
-
+  .btn-icon svg { width: 20px; height: 20px; display: block; }
   .link-btn:hover .btn-icon { transform: scale(1.1) rotate(-3deg); }
-  .btn-icon svg { width: 18px; height: 18px; }
 
-  .btn-text { flex: 1; }
-
-  .btn-name {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--white);
-    letter-spacing: 0.3px;
-  }
-
+  .btn-text { flex: 1; min-width: 0; }
+  .btn-name { font-weight: 600; font-size: 14px; color: var(--white); letter-spacing: 0.3px; }
   .btn-sub {
     font-size: 11px;
     color: var(--text-muted);
     margin-top: 1px;
     font-family: 'Space Mono', monospace;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-
-  .btn-arrow {
-    color: var(--text-muted);
-    transition: transform 0.3s, color 0.3s;
-  }
-
+  .btn-arrow { color: var(--text-muted); transition: transform 0.3s, color 0.3s; }
   .link-btn:hover .btn-arrow { transform: translateX(3px); color: var(--accent); }
+
+  /* ── PORTFOLIO ── */
+  .portfolio-grid { display: grid; gap: 10px; }
+  .portfolio-card {
+    display: block;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .portfolio-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(200,169,110,0.25);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+  }
+  .portfolio-name { font-weight: 600; font-size: 14px; color: var(--white); }
+  .portfolio-desc { margin-top: 5px; font-size: 12px; line-height: 1.6; color: var(--text-muted); }
+  .portfolio-meta { margin-top: 10px; font: 10px 'Space Mono', monospace; color: var(--accent); letter-spacing: 1px; }
 
   /* ── FOOTER ── */
   .footer {
@@ -567,121 +582,20 @@
       <div class="bio-slide">Loyal. Focused. Unstoppable.</div>
       <div class="bio-slide">Simple outside. Storm inside. 🌪️</div>
       <div class="bio-slide">Not perfect. Just consistent.</div>
-      <div class="bio-slide">I stay quiet, observe deeply, and move with purpose. I don't chase attention; I chase growth, discipline, and the life I'm building silently.</div>
+      <!-- <div class="bio-slide"></div> -->
     </div>
 
     <div class="bio-dots" id="bioDots"></div>
   </div>
 
   <!-- Links -->
-  <div class="divider">
-    <div class="divider-line"></div>
-    <span class="divider-text">Connect</span>
-    <div class="divider-line"></div>
-  </div>
+  <div class="links-section" id="accountSections"></div>
 
-  <div class="links">
-
-    <a href="https://instagram.com/mr_mansur_ak_143_._" target="_blank" class="link-btn btn-instagram">
-      <div class="btn-icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs>
-          <rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#ig)" stroke-width="2"/>
-          <circle cx="12" cy="12" r="4" stroke="url(#ig)" stroke-width="2"/>
-          <circle cx="17.5" cy="6.5" r="1" fill="url(#ig)"/>
-        </svg>
-      </div>
-      <div class="btn-text">
-        <div class="btn-name">Instagram</div>
-        <div class="btn-sub">@mr_mansur_ak_143_._</div>
-      </div>
-      <div class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    </a>
-
-    <a href="https://linkedin.com/in/pathan-mansur-953498372/ " target="_blank" class="link-btn btn-linkedin">
-      <div class="btn-icon">
-        <svg viewBox="0 0 24 24" fill="#0077b5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      </div>
-      <div class="btn-text">
-        <div class="btn-name">LinkedIn</div>
-        <div class="btn-sub">Pathan Mansoor Ali Khan</div>
-      </div>
-      <div class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    </a>
-
-    <a href="https://github.com/mansoorXcoder" target="_blank" class="link-btn btn-github">
-      <div class="btn-icon">
-        <svg viewBox="0 0 24 24" fill="#e8e8e8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-      </div>
-      <div class="btn-text">
-        <div class="btn-name">GitHub</div>
-        <div class="btn-sub">mansoorXcoder</div>
-      </div>
-      <div class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    </a>
-<!--
-    <a href="https://twitter.com/ManssorX" target="_blank" class="link-btn btn-twitter">
-      <div class="btn-icon">
-        <svg viewBox="0 0 24 24" fill="#1da1f2"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      </div>
-      <div class="btn-text">
-        <div class="btn-name">Twitter / X</div>
-        <div class="btn-sub">@mansoor</div>
-      </div>
-      <div class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    </a>
-
-    <a href="https://reddit.com/u/mansoor-dev" target="_blank" class="link-btn btn-reddit">
-      <div class="btn-icon">
-        <svg viewBox="0 0 24 24" fill="#ff4500"><circle cx="12" cy="12" r="10"/><path fill="#fff" d="M20 12a2 2 0 0 0-2-2 2 2 0 0 0-1.4.6A9.8 9.8 0 0 0 12.5 9l.9-4.1 2.7.6a1.5 1.5 0 1 0 .1-.8l-3-.7L12 8.1a9.8 9.8 0 0 0-4.1 1.5A2 2 0 1 0 5.6 13a3.6 3.6 0 0 0 0 .5c0 2.5 2.9 4.5 6.4 4.5s6.4-2 6.4-4.5a3.6 3.6 0 0 0 0-.5z"/></svg>
-      </div>
-      <div class="btn-text">
-        <div class="btn-name">Reddit</div>
-        <div class="btn-sub">u/mansoor</div>
-      </div>
-      <div class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    </a>
-
-    <a href="https://t.me/mansoor_tm" target="_blank" class="link-btn btn-telegram">
-      <div class="btn-icon">
-        <svg viewBox="0 0 24 24" fill="#229ed9"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.68 7.92c-.12.56-.46.7-.94.44l-2.56-1.88-1.24 1.18c-.14.14-.26.26-.52.26l.18-2.62 4.72-4.26c.2-.18-.04-.28-.32-.1L7.6 13.96l-2.54-.8c-.55-.17-.56-.55.12-.8l9.92-3.82c.46-.16.86.1.71.8z"/></svg>
-      </div>
-      <div class="btn-text">
-        <div class="btn-name">Telegram</div>
-        <div class="btn-sub">@mansoor_tm</div>
-      </div>
-      <div class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    </a>
-  -->
-    <a href="https://www.snapchat.com/add/mansur_pak14344?share_id=rSb3pvDHfrA&locale=en-GB" target="_blank" class="link-btn btn-snapchat">
-      <div class="btn-icon">
-        <svg viewBox="0 0 24 24" fill="#fffc00"><path d="M12.166.006C9.338-.113 6.67 1.15 5.064 3.417c-.624.9-.93 1.98-.875 3.07v.755c-.652.29-1.35.454-2.06.484-.11.012-.217.047-.31.103-.315.174-.483.536-.414.887.063.267.24.494.487.615.44.213.896.38 1.364.498-.16.338-.268.698-.32 1.07-.038.22.058.444.25.57.2.132.454.145.663.037.53-.28 1.025-.614 1.47-1 .705.92 1.702 1.578 2.83 1.87.47.122.95.19 1 .202v-9c-9e-3 .009-9e-3 .009-9e-3 .009h-9e-3c-9e-3 .009-9e-3 .009-9e-3 .009h-9e-3c-9e-3 .009-9e-3 .009-9e-3 .009h-9e-3c-9e-3 .009-9e-3 .009z"/></svg>
-      </div>
-      <div class="btn-text">
-        <div class="btn-name">Snapchat</div>
-        <div class="btn-sub">mansur_pak14344</div>
-      </div>
-      <div class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    </a>
-<!-- Add me on Snapchat! Username: mansur_pak14344 https://www.snapchat.com/add/mansur_pak14344?share_id=rSb3pvDHfrA&locale=en-GB -->
-
-<!-- <a href="#" class="link-btn btn-game">
-  <div class="btn-icon">
-    🎮
-  </div>
-
-  <div class="btn-text">
-    <div class="btn-name">Free Fire</div>
-    <div class="btn-sub">ID: 2249085919</div>
-  </div>
-
-  <div class="btn-arrow">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M5 12h14M12 5l7 7-7 7"/>
-    </svg>
-  </div>
-</a> -->
-  </div> 
+  <!-- Portfolio -->
+  <section class="links-section" id="portfolioSection">
+    <div class="section-title">My Portfolio</div>
+    <div class="portfolio-grid" id="portfolioGrid"></div>
+  </section>
 
   <!-- Footer 
   <div class="footer">
@@ -712,6 +626,81 @@
 -->
 <div class="toast" id="toast">Message sent! ✦</div>
 <script>
+  // ── Account configuration: edit only this section ──
+  const accounts = [
+    { id: 'linkedin', category: 'social', name: 'LinkedIn', username: 'Pathan Mansoor Ali Khan', url: 'https://linkedin.com/in/pathan-mansur-953498372/', enabled: true },
+    { id: 'github', category: 'social', name: 'GitHub', username: 'mansoorXcoder', url: 'https://github.com/mansoorXcoder', enabled: true },
+    { id: 'instagram', category: 'social', name: 'Instagram', username: '@mr_mansur_ak_143_._', url: 'https://instagram.com/mr_mansur_ak_143_._', enabled: true },
+    { id: 'twitter', category: 'social', name: 'X / Twitter', username: '@mansoor', url: 'https://twitter.com/ManssorX', enabled: false },
+    { id: 'reddit', category: 'social', name: 'Reddit', username: 'u/mansoor', url: 'https://reddit.com/u/mansoor-dev', enabled: false },
+    { id: 'telegram', category: 'social', name: 'Telegram', username: '@mansoor_tm', url: 'https://t.me/mansoor_tm', enabled: false },
+    { id: 'snapchat', category: 'social', name: 'Snapchat', username: 'mansur_pak14344', url: 'https://www.snapchat.com/add/mansur_pak14344', enabled: true },
+
+    // Add your real learning accounts here.
+    { id: 'leetcode', category: 'learning', name: 'LeetCode', username: 'Add username', url: '#', enabled: false },
+    { id: 'hackerrank', category: 'learning', name: 'HackerRank', username: 'Add username', url: '#', enabled: false },
+
+    // Add your real game accounts here.
+    { id: 'freefire', category: 'gaming', name: 'Free Fire MAX', username: 'ID: 2249085919', url: '#', enabled: false },
+    { id: 'stardive', category: 'gaming', name: 'StarDive', username: 'Add account', url: '#', enabled: false }
+  ];
+
+  const portfolio = [
+    // Example:
+    // { name: 'Project Name', description: 'Short project description.', tech: 'HTML • CSS • JS', url: 'https://...' }
+    // Example:
+    { name: 'Project Name', description: 'Short project description.', tech: 'HTML • CSS • JS', url: 'https://mansoorxcoder.github.io/profiles/index02' }
+  ];
+
+  const icons = {
+    linkedin: `<svg viewBox="0 0 24 24" fill="#0077b5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`,
+    instagram: `<svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="igIcon" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#igIcon)" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="url(#igIcon)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="url(#igIcon)"/></svg>`,
+    github: `<svg viewBox="0 0 24 24" fill="#e8e8e8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>`,
+    twitter: `<svg viewBox="0 0 24 24" fill="#e8e8e8"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
+    reddit: `<svg viewBox="0 0 24 24" fill="#ff4500"><circle cx="12" cy="12" r="10"/><path fill="#fff" d="M20 12a2 2 0 0 0-2-2 2 2 0 0 0-1.4.6A9.8 9.8 0 0 0 12.5 9l.9-4.1 2.7.6a1.5 1.5 0 1 0 .1-.8l-3-.7L12 8.1a9.8 9.8 0 0 0-4.1 1.5A2 2 0 1 0 5.6 13a3.6 3.6 0 0 0 0 .5c0 2.5 2.9 4.5 6.4 4.5s6.4-2 6.4-4.5a3.6 3.6 0 0 0 0-.5z"/></svg>`,
+    telegram: `<svg viewBox="0 0 24 24" fill="#229ed9"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.68 7.92c-.12.56-.46.7-.94.44l-2.56-1.88-1.24 1.18c-.14.14-.26.26-.52.26l.18-2.62 4.72-4.26c.2-.18-.04-.28-.32-.1L7.6 13.96l-2.54-.8c-.55-.17-.56-.55.12-.8l9.92-3.82c.46-.16.86.1.71.8z"/></svg>`,
+    snapchat: `<svg viewBox="0 0 24 24" fill="#fffc00"><path d="M12 2.1c-3.25 0-5.7 2.36-5.7 5.64v1.3c0 .5-.23 1.18-.62 1.64-.35.4-.87.68-1.48.83-.35.09-.56.38-.51.72.07.43.56.61 1.08.75.52.14 1.02.25 1.22.58.12.2.1.48-.06.83-.18.4-.08.7.27.82.32.11.65.12.98.08.3-.03.67-.01.94.17.34.23.62.65 1.05.96.65.47 1.42.7 2.31.7h.05c.89 0 1.66-.23 2.31-.7.43-.31.71-.73 1.05-.96.27-.18.64-.2.94-.17.33.04.66.03.98-.08.35-.12.45-.42.27-.82-.16-.35-.18-.63-.06-.83.2-.33.7-.44 1.22-.58.52-.14 1.01-.32 1.08-.75.05-.34-.16-.63-.51-.72-.61-.15-1.13-.43-1.48-.83-.39-.46-.62-1.14-.62-1.64v-1.3C17.7 4.46 15.25 2.1 12 2.1z"/></svg>`,
+    leetcode: `<svg viewBox="0 0 24 24" fill="none"><path d="M16.5 3.5 13 7l4 4 3.5-3.5" stroke="#f89f1b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 7 8 12l5 5" stroke="#e8e8e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 12h12" stroke="#f89f1b" stroke-width="2" stroke-linecap="round"/></svg>`,
+    hackerrank: `<svg viewBox="0 0 24 24" fill="#2ec866"><path d="M7 3h3v6h4V3h3v18h-3v-6h-4v6H7z"/></svg>`,
+    freefire: `<svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2.2 3.1 1.7 5.1.5 6.8 2.9-1 5.1.8 5.8 3.4.8 3.2-1.7 7.2-6.3 9.8-4.6-2.6-7.1-6.6-6.3-9.8.6-2.6 2.9-4.4 5.8-3.4C10.3 7.1 9.8 5.1 12 2z" fill="#e8e8e8"/></svg>`,
+    stardive: `<svg viewBox="0 0 24 24" fill="none"><path d="m12 2 1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2z" fill="var(--accent)"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z" fill="#e8e8e8"/></svg>`
+  };
+
+  const categoryNames = { social: 'Social Media', learning: 'Learning & Coding', gaming: 'Gaming' };
+
+  function arrowIcon() {
+    return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+  }
+
+  function renderAccounts() {
+    const root = document.getElementById('accountSections');
+    const enabled = accounts.filter(account => account.enabled);
+    root.innerHTML = Object.entries(categoryNames).map(([category, title]) => {
+      const items = enabled.filter(account => account.category === category);
+      if (!items.length) return '';
+      return `<section><div class="section-title">${title}</div><div class="links">${items.map(account => `
+        <a href="${account.url}" target="_blank" rel="noopener noreferrer" class="link-btn btn-${account.id}">
+          <div class="btn-icon">${icons[account.id] || icons.github}</div>
+          <div class="btn-text"><div class="btn-name">${account.name}</div><div class="btn-sub">${account.username}</div></div>
+          <div class="btn-arrow">${arrowIcon()}</div>
+        </a>`).join('')}</div></section>`;
+    }).join('');
+  }
+
+  function renderPortfolio() {
+    const grid = document.getElementById('portfolioGrid');
+    if (!portfolio.length) {
+      grid.innerHTML = '<div class="portfolio-card"><div class="portfolio-name">Portfolio coming soon</div><div class="portfolio-desc">Add your projects in the portfolio configuration.</div></div>';
+      return;
+    }
+    grid.innerHTML = portfolio.map(project => `
+      <a class="portfolio-card" href="${project.url}" target="_blank" rel="noopener noreferrer">
+        <div class="portfolio-name">${project.name}</div>
+        <div class="portfolio-desc">${project.description}</div>
+        <div class="portfolio-meta">${project.tech}</div>
+      </a>`).join('');
+  }
+
   // ── Bio rotator ──
   const slides = document.querySelectorAll('.bio-slide');
   const dotsContainer = document.getElementById('bioDots');
@@ -738,24 +727,11 @@
   }
 
   function advance() { goTo((current + 1) % slides.length); }
+  function resetTimer() { clearInterval(timer); timer = setInterval(advance, 4500); }
 
-  function resetTimer() {
-    clearInterval(timer);
-    timer = setInterval(advance, 4500);
-  }
-
+  renderAccounts();
+  renderPortfolio();
   resetTimer();
-
-  // ── Toast ──
-  function sendMessage() {
-    const body = document.getElementById('msg-body').value.trim();
-    if (!body) { document.getElementById('msg-body').focus(); return; }
-    document.getElementById('msg-name').value = '';
-    document.getElementById('msg-body').value = '';
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3000);
-  }
 </script>
 </body>
 </html>
